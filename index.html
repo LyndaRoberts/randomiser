@@ -13,79 +13,105 @@
     integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body onload="drawCard();">
   <div class="container">
-    <div class="text-center">
-      <div class="display-4 page-title">Randomiser</div>
-    </div>
-    <div class="game-setup">
-      <form id="setup" onsubmit="setupComplete();">
-        <div class="form-group">
-          <label for="setup-card-content">Card content</label>
-          <textarea class="form-control" id="setup-card-content" rows="5"></textarea>
-          <small class="form-text text-muted">One card per line. Supports basic HTML.</small>
-        </div>
-        <div class="form-group">
-          <button type="button" class="btn btn-lg btn-success" onclick="setupComplete();">Go!</button>
-        </div>
-      </form>
-      <hr />
-    </div>
-    <div id="deck" class="deck d-none">
-      <h2>Draw a card</h2>
+    <div id="deck" class="deck">
       <div class="active-card">
         <p id="card-text" class="active-card-text"></p>
       </div>
       <p>
-        <button class="btn btn-lg btn-success" onclick="drawCard();">Draw</button>
+        <button class="btn btn-lg btn-success" onclick="drawCard();">Randomise</button>
       </p>
     </div>
-
   </div>
 
   <script>
     // SETUP
     let Deck;
     let CardList = [
-      "This is a default card.",
-      "This is another default card.",
-      "This is another default card too.",
-    ];
+    "Think outside the work",
+"Take work for a walk outside",
+"Work (and play) your network",
+"Work in situ",
+"Work bottom-up (and sideways)",
+"Work with not for",
+"Have an escape plan",
+"Have more than one cultural captain",
+"Play the long game. Play the short game. Play both simultaneously.",
+"Play in the ambiguous zones. ",
+"Play the double agent. Play triangular politics.",
+"Make time to listen to Elders ",
+"Make your constraints productive",
+"Make non-consensus useful",
+"Make it political",
+"Make space",
+"Seek critical feedback. Hear what you don’t want to hear.",
+"Instrumentalisation – beware! ",
+"Let practice make trouble for theory",
+"Opportunities – be aware!",
+"Take risk out of the equation",
+"Build resilience. Build capacity",
+"Listen to what the site / situation is telling you",
+"Know your line of compromise",
+"Activate a strategy centred on risk ",
+"Focus on the process (not at the expense of the outcome)",
+"Build and nurture a coalition of the willing ",
+"Prioritise communications",
+"Ask the impossible",
+"Learn the power of agency, yours and theirs ",
+"Delegate – externally produce / auspice",
+"Trouble your ideas",
+"Continually check you are not missing something / someone",
+"Advocate by benchmarking",
+"Be self-reflexive about levels of care",
+"[Leave blank]",
+"[Leave blank]",
+"Think like water",
+"Ignore the gatekeepers",
+"Spot fires but prioritise which ones to put out",
+"Be a conductor",
+"Follow the money to find motives",
+"Budget with equal parts care and danger ",
+"Allocate resourcing appropriately not equally",
+"Place the artist in the centre, stand next to them ",
+"View everything as temporary",
+"Be circumspect about disciplinary boundaries",
+"Forage through other disciplines ",
+"Empower self-determination",
+"Reveal the hidden biases",
+"Check your privilege ",
+"Cultivate a political champion ",
+"Know when to speak or when an expert would do it better",
+"Change the order of things",
+"Rework the process ",
+"Ask for forgiveness rather than permission",
+"Test. Test on site. Test at full scale. ",
+"Identify your optimal critical distance ",
+"Create a story. Follow a story.",
+"Always be proactive with media",
+"Buy more time",
+"Think like an artist (mostly)",
+"Every interaction is a collaboration",
+"Shift timescales ",
+"Act by doing nothing ",
+"Reframe as a collective action",
+"Ask more questions, seek fewer answers",
+"Worry about what you can control",
+"Live in-between the real and the imaginary",
+"Jump-cut to twelve months from now",
+"Deploy the charm offensive",
+"Read The Art of War by Sun Tzu",
+"Read Decolonizing Solidarity by Clare Land",
+"Break a rule that is stopping you",
+"Get unsettled from the Melbourne Principles 2016",
+"Only say yes  from Testing Grounds",
+"Engage a charismatic agent from Claire Doherty",
+"Find leverage points in the system from Donella Meadows",
+"Move beyond the transactional to a relational model from Jefa Greenaway",
+"Be the velvet sledgehammer from David Cross",
+"Bitch-up from Natalie King"
+ ];
 
-    function setupToggleHide() {
-      let form = document.getElementById('setup');
-      form.classList.toggle('d-none');
-    }
-
-    function setupComplete() {
-      let setupCardContent = document.getElementById('setup-card-content').value;
-      let setupCards = setupCardContent.split('\n');
-
-      for (let i = 0; i < setupCards.length; i++) {
-        if (setupCards[i] == "") {
-          setupCards.splice(i, 1);
-          i--;
-        }
-      }
-
-      if (setupCards.length > 0) {
-        //CardList = [];
-        //CardList = setupCards.slice();
-        CardList = [
-              "This is a default card.",
-              "This is another default card.",
-              "This is another default card too."
-            ];
-        
-        
-        console.log("INFO: The following cards were parsed.");
-        console.log(CardList);
-
-        refillCards();
-        document.getElementById('setup').classList.add('d-none');
-        document.getElementById('deck').classList.remove('d-none');
-      }
-    }
 
     function shuffle(a) {
       for (let i = a.length - 1; i > 0; i--) {
@@ -99,7 +125,7 @@
       Deck = [];
       Deck = CardList.slice();
       Deck = shuffle(Deck);
-      console.log('INFO: Deck was refilled and shuffled.');
+      //console.log('INFO: Deck was refilled and shuffled.');
     }
 
     // GAME
