@@ -9,7 +9,16 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.min.css">
+  <style>
+  *{box-sizing:border-box}
+html,body{padding:0;margin:0}
+h1,h2,h3,h4,h5,h6{font-weight:300}
+.page-title{margin-top:2rem}
+.deck{text-align:center}
+.deck .active-card{box-shadow:2px 2px 2px #eee;border:1px solid #ddd;border-radius:10px;padding:20px;height:200px;width:350px;margin:0 auto;margin-bottom:20px}
+.deck .active-card .active-card-text{font-size:20px;text-align:left}
+  
+  </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
     integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 </head>
@@ -21,7 +30,7 @@
         <p id="card-text" class="active-card-text"></p>
       </div>
       <p>
-        <button class="btn btn-lg btn-success" onclick="drawCard();">Another?</button>
+        <button class="btn btn-lg" onclick="drawCard();">Another?</button>
       </p>
     </div>
   </div>
